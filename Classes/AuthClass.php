@@ -16,8 +16,6 @@
 			$buffer = file_get_contents($apiAuth);
 			$data = json_decode($buffer,true);
 			$token = $data['result']['token'];
-			
-			
 			return $token;			
 		}
 	}
