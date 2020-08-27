@@ -9,7 +9,8 @@ class DomainClass{
 			$res = file_get_contents($apiDomainCreate);
 			$res = json_decode($res,true);
 			
-			return $res;
+			return $apiDomainCreate;
+			//return $res;
 		}
 }
 ?>

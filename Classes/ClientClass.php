@@ -5,18 +5,21 @@
 			
 			
 			
-			$apiClient = 'https://vrdemo.virtreg.ru/vr-api/';
+			$apiClient = 'https://vrdemo.virtreg.ru/vr-api/?method=clientCreate&params=';
 			
-			$apiClient .='?method=clientCreate&params={"auth":{"token":"'.$token.'"},';
+			$apiClient .='{"auth":{"token":"'.$token.'"},';
             $apiClient .='"client":{"legal":"'.$legal.'","nameLocal":"'.urlencode($name).'","birthday":"'.$bday.'",';
             $apiClient .='"identity":{"type":"passport","series":"'.$series.'","number":"'.$number.'","issuer":"'.$issuer.'","issued":"'.$issued.'"},';
-            $apiClient .='"emails":["'.$emails.'"],"phones":["'.$phones.'"],';
+            $apiClient .='"emails":["'.$emails.'"],"phones":["'.urlencode($phones).'"],';
             $apiClient .='"addressLocal":{"index":"'.$ind.'","country":"'.$country.'","city":"'.$city.'","street":"'.urlencode($street).'"}}}';
 			
-			//$buffer = file_get_contents($apiAuth);
-			//$data = json_decode($buffer,true);
-			//$token = $data['result']['token'];
-			return $apiClient;			
+			$buffer = "";
+			$clientId = "";
+			
+			$buffer = file_get_contents($apiClient);
+			$data = json_decode($buffer,true);
+			$token = $data['result']['id'];
+			return $id;			
 		}
 	}
 ?>
